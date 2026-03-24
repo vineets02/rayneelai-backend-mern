@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: rayneelai-backend-mern
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
