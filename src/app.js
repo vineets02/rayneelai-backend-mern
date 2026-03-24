@@ -37,6 +37,19 @@ app.options('*', cors(corsOptions));
 app.use('/health', healthRoutes);
 app.use('/api/contact', contactRoutes);
 
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: "RayneelAI backend is running",
+    endpoints: {
+      health: "/health",
+      contact: "/api/contact"
+    }
+  });
+});
+
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: 'API route not found' });
 });
