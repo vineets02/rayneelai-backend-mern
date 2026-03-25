@@ -7,6 +7,7 @@ const errorHandler = require('./middleware/errorHandler');
 
 const contactRoutes = require('./routes/contactRoutes');
 const healthRoutes = require('./routes/healthRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.options('*', cors(corsOptions));
 
 app.use('/health', healthRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
@@ -45,7 +47,8 @@ app.get('/', (req, res) => {
     message: "RayneelAI backend is running",
     endpoints: {
       health: "/health",
-      contact: "/api/contact"
+      contact: "/api/contact",
+      admin: "/api/admin"
     }
   });
 });
